@@ -6,6 +6,8 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
 
+set timeoutlen=0
+
 set number
 syntax on
 colorscheme jellybeans
