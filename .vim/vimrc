@@ -6,8 +6,54 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ }
 
+" no esc key delay
 set timeoutlen=0
+
+set history=500
+
+" autoreload externally changed files
+set autoread
+
+" hide files instead of close
+set hid
+
+" case sensititvity when searching
+set ignorecase
+set smartcase
+
+" highlight search match
+set hlsearch
+set incsearch
+
+
+set lazyredraw
+set magic
+
+" set encoding and line endings
+set encoding=utf8
+set ffs=unix,dos,mac
+
+" no weird swap files
+set nobackup
+set nowb
+set noswapfile
+
+" tabs and stuff
+set tabstop=8
+"set softtabstop=8
+set shiftwidth=8
+set noexpandtab
+set textwidth=80
+set autoindent
+set cindent
+set cinoptions=:0,l1,t0,g0,(0
+set colorcolumn=81
 
 set number
 syntax on
 colorscheme jellybeans
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=darkgrey guibg=darkgrey
+match ExtraWhitespace /\s\+$/
+
