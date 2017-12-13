@@ -1,5 +1,5 @@
 /usr/bin/dunst > /dev/null 2>&1 &
-/home/jan/dev/dwm/titlebar.sh &
+/home/jan/devel/dwm/titlebar.sh &
 xbindkeys &
 setxkbmap -option ctrl:nocaps &
 xset r rate 250 25 &
