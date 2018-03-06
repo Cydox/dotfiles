@@ -29,3 +29,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 # enable 256 colors in tmux
 alias tmux="TERM=xterm-256color tmux"
+
+# use vim as editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export GIT_EDITOR=vim

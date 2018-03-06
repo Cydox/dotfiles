@@ -1,4 +1,5 @@
 /usr/bin/dunst > /dev/null 2>&1 &
+~/.fehbg &
 /home/jan/devel/dwm/titlebar.sh &
 xbindkeys &
 setxkbmap -option ctrl:nocaps &

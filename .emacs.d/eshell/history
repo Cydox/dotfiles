@@ -3,3 +3,21 @@ exit
 ll
 ls -l
 zsh
+make
+./st
+make
+./st
+make
+./st
+make clean
+cd ..
+cd src/
+git status
+git diff
+git status
+git add config.h
+git status
+git commit -m "change font to DejaVu Sans Mono"
+cd ..
+makepkf -if
+makepkg -if

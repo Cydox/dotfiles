@@ -1,0 +1,113 @@
+* MELPA
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		      (not (gnutls-available-p))))
+	 (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+    (add-to-list 'package-archives (cons "melpa" url) t))
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (package-initialize)
+#+END_SRC
+
+* use-package
+* General UI
+
+Turn of menu bar, scroll bar, and tool bar. Also display column.
+
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1) 
+(setq column-number-mode t)
+#+END_SRC
+
+* movement
+
+Have evil-mode loaded, but disabled.
+Only move one line at a time.
+
+#+BEGIN_SRC emacs-lisp
+(require 'evil)
+(evil-mode 0)
+(setq scroll-step 1)
+(setq scroll-margin 1)
+(global-visual-line-mode t)
+#+END_SRC
+* Theme
+
+Wombat theme and custom cursor color.
+
+#+BEGIN_SRC emacs-lisp
+(load-theme 'wombat)
+(set-default-font "DejaVu Sans Mono-14")
+
+(set-cursor-color "#ff0083")
+(blink-cursor-mode 0)
+#+END_SRC
+
+* Org-mode
+
+ob-python for python code blocks. htmlize for syntax hightlight.
+The amazing org-ref package for references.
+org-bullets to switch stars for UTF-8 characters.
+
+#+BEGIN_SRC emacs-lisp
+(require 'org)
+(require 'ob-ipython)
+(setq org-confirm-babel-evaluate nil)
+(require 'htmlize)
+(require 'org-ref)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook 'org-hide-block-all)
+#+END_SRC
+
+* ibuffer
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+
+* Markdown
+
+#+BEGIN_SRC emacs-lisp
+(require 'markdown-mode)
+#+END_SRC
+
+* Golang
+
+#+BEGIN_SRC emacs-lisp
+(require 'go-mode)
+#+END_SRC
+* Webmode
+
+#+BEGIN_SRC emacs-lisp
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+#+END_SRC
+
+* Magit
+
+#+BEGIN_SRC emacs-lisp
+(require 'magit)
+#+END_SRC
+
+* swiper
+
+#+BEGIN_SRC emacs-lisp
+(require 'swiper)
+(global-set-key (kbd "C-s") 'swiper)
+#+END_SRC
+
+* Python

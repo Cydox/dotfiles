@@ -1,0 +1,68 @@
+* MELPA
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+
+  (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+		      (not (gnutls-available-p))))
+	 (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+    (add-to-list 'package-archives (cons "melpa" url) t))
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (package-initialize)
+#+END_SRC
+
+* General UI
+
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1) 
+(setq column-number-mode t)
+#+END_SRC
+
+* movement
+
+#+BEGIN_SRC emacs-lisp
+(require 'evil)
+(evil-mode 0)
+(setq scroll-step 1)
+(setq scroll-margin 1)
+(global-visual-line-mode t)
+#+END_SRC
+
+* Theme
+
+#+BEGIN_SRC emacs-lisp
+(load-theme 'wombat)
+(set-default-font "DejaVu Sans Mono-14")
+
+(set-cursor-color "#ff0083")
+(blink-cursor-mode 0)
+#+END_SRC
+
+* Org-mode
+
+#+BEGIN_SRC emacs-lisp
+(require 'org)
+(require 'ob-ipython)
+(setq org-confirm-babel-evaluate nil)
+(require 'htmlize)
+(require 'org-ref)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook 'org-hide-block-all)
+#+END_SRC
+
+* Key bindings
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+
+* Markdown
+* Golang
+* Python
+* Webmode
+* Magit
